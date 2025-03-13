@@ -1,6 +1,5 @@
 import { gql } from 'graphql-request';
 import { getSession } from 'next-auth/react';
-
 import { hygraphClient } from '../../../lib/hygraph';
 
 export const GetAllTodosByUser = gql`
@@ -9,6 +8,7 @@ export const GetAllTodosByUser = gql`
       id
       description
       completed
+      dueDate
     }
   }
 `;
@@ -18,55 +18,62 @@ const CreateNewTodoForUser = gql`
     $description: String!
     $completed: Boolean
     $userId: ID!
+    $dueDate: DateTime!
   ) {
     todo: createTodo(
       data: {
         description: $description
         completed: $completed
+        dueDate: $dueDate
         nextAuthUser: { connect: { id: $userId } }
       }
     ) {
       id
       description
       completed
+      dueDate
     }
   }
 `;
 
 export default async (req, res) => {
   const session = await getSession({ req });
-
   if (!session) {
-    res.status(401).send({
+    return res.status(401).send({
       error: 'Unauthorized',
     });
   }
-
-  switch (req.method.toLowerCase()) {
-    case 'get': {
-      const { todos } = await hygraphClient.request(GetAllTodosByUser, {
-        userId: session.userId,
-      });
-
-      res.status(200).json(todos);
-      break;
+  
+  try {
+    switch (req.method.toLowerCase()) {
+      case 'get': {
+        const { todos } = await hygraphClient.request(GetAllTodosByUser, {
+          userId: session.userId,
+        });
+        return res.status(200).json(todos);
+      }
+      case 'post': {
+        const { description, completed, dueDate } = req.body;
+        
+        const todoData = {
+          description,
+          completed: completed || false,
+          userId: session.userId
+        };
+        
+        if (dueDate) {
+          todoData.dueDate = dueDate;
+        }
+        
+        const { todo } = await hygraphClient.request(CreateNewTodoForUser, todoData);
+        return res.status(201).json(todo);
+      }
+      default: {
+        return res.status(405).send({ error: 'Method not allowed' });
+      }
     }
-
-    case 'post': {
-      const { description, completed } = req.body;
-
-      const { todo } = await hygraphClient.request(CreateNewTodoForUser, {
-        description,
-        completed,
-        userId: session.userId,
-      });
-
-      res.status(201).json(todo);
-      break;
-    }
-
-    default: {
-      res.status(405).send();
-    }
+  } catch (error) {
+    console.error('API error:', error);
+    return res.status(500).json({ error: 'Server error', details: error.message });
   }
 };

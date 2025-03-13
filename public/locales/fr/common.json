@@ -41,5 +41,25 @@
     "error_confirm_password_required": "Veuillez confirmer votre mot de passe",
     "error_password_mismatch": "Les mots de passe ne correspondent pas",
     "error_form": "Une erreur est survenue. Veuillez réessayer."
-  }
+  },
+  "selectDueDate": "Sélectionner une date d'échéance",
+  "addTodo": "Ajouter une tâche",
+  "cancel": "Annuler",
+  "tasks": "Tâches",
+  "dueDate": "Date d'échéance",
+  "enterTodoDescription": "Que faut-il faire ?",
+  "markCompleted": "Marquer comme terminé",
+  "noTodosYet": "Aucune tâche pour le moment",
+  "addYourFirstTodo": "Ajoutez votre première tâche",
+  "todoAdded": "Tâche ajoutée avec succès",
+  "todoUpdated": "Tâche mise à jour avec succès",
+  "todoDeleted": "Tâche supprimée",
+  "failedToAddTodo": "Échec de l'ajout de la tâche",
+  "failedToUpdateTodo": "Échec de la mise à jour de la tâche",
+  "failedToDeleteTodo": "Échec de la suppression de la tâche",
+  "errorFetchingTodos": "Erreur lors du chargement des tâches",
+  "list": "Liste",
+  "calendar": "Calendrier",
+  "deleteTodo": "Supprimer la tâche"
+
 }

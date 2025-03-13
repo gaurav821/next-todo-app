@@ -29,7 +29,6 @@ export default function Login() {
       [name]: value
     }));
     
-    // Clear error for the field being edited
     setErrors(prev => ({
       ...prev,
       [name]: '',
@@ -40,26 +39,22 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Reset all errors
     const newErrors = {
       email: '',
       password: '',
       form: ''
     };
     
-    // Validate email
     if (!credentials.email) {
       newErrors.email = t('emailRequired');
     } else if (!validateEmail(credentials.email)) {
       newErrors.email = t('invalidEmail');
     }
     
-    // Validate password
     if (!credentials.password) {
       newErrors.password = t('passwordRequired');
     }
     
-    // Check if there are any errors
     const hasErrors = Object.values(newErrors).some(error => error !== '');
     
     if (hasErrors) {
@@ -67,7 +62,6 @@ export default function Login() {
       return;
     }
     
-    // If no validation errors, proceed with sign in
     try {
       const result = await signIn('credentials', {
         redirect: false,

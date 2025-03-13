@@ -1,4 +1,3 @@
-// components/TodoModal.js
 import { useState } from "react";
 import Modal from "react-modal";
 import { XIcon } from "@heroicons/react/solid";
@@ -68,7 +67,7 @@ export default function TodoModal({
           <button
             type="button"
             onClick={handleDelete}
-            className="bg-red-500 text-white px-4 py-2 rounded"
+            className="bg-gray-100 text-gray-700 px-4 py-2 rounded"
           >
             {t('delete')}
           </button>

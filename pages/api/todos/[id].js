@@ -9,18 +9,21 @@ const UpdateTodoById = gql`
     $description: String
     $completed: Boolean
     $userId: ID!
+    $dueDate: DateTime!
   ) {
     todo: updateTodo(
       where: { id: $id }
       data: {
         description: $description
         completed: $completed
+        dueDate: $dueDate
         nextAuthUser: { connect: { id: $userId } }
       }
     ) {
       id
       description
       completed
+      dueDate
     }
   }
 `;
@@ -45,14 +48,13 @@ export default async (req, res) => {
   switch (req.method.toLowerCase()) {
     case 'patch': {
       const { id } = req.query;
-      const { description, completed } = req.body;
-
-      // Check is owner?
+      const { description, completed, dueDate } = req.body;
 
       const { todo } = await hygraphClient.request(UpdateTodoById, {
         id,
         description,
         completed,
+        dueDate,
         userId: session.userId,
       });
 
@@ -62,8 +64,6 @@ export default async (req, res) => {
 
     case 'delete': {
       const { id } = req.query;
-
-      // Check is owner?
 
       await hygraphClient.request(DeleteTodoById, {
         id,

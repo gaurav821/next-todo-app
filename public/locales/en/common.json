@@ -41,5 +41,24 @@
     "error_confirm_password_required": "Please confirm your password",
     "error_password_mismatch": "Passwords do not match",
     "error_form": "An error occurred. Please try again."
-  }
+  },
+  "selectDueDate": "Select due date",
+  "addTodo": "Add Task",
+  "cancel": "Cancel",
+  "tasks": "Tasks",
+  "dueDate": "Due Date",
+  "enterTodoDescription": "What needs to be done?",
+  "markCompleted": "Mark as completed",
+  "noTodosYet": "No tasks yet",
+  "addYourFirstTodo": "Add your first task",
+  "todoAdded": "Task added successfully",
+  "todoUpdated": "Task updated successfully",
+  "todoDeleted": "Task deleted",
+  "failedToAddTodo": "Failed to add task",
+  "failedToUpdateTodo": "Failed to update task",
+  "failedToDeleteTodo": "Failed to delete task",
+  "errorFetchingTodos": "Error loading tasks",
+  "list": "List",
+  "calendar": "Calendar",
+  "deleteTodo": "Delete task"
 }

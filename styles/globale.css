@@ -1,6 +1,4 @@
-/* styles/global.css */
 
-/* Modal Styling */
 .modal {
     background: white;
     padding: 20px;
@@ -15,7 +13,6 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
-  /* Overlay Styling */
   .overlay {
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
@@ -29,3 +26,7 @@
     align-items: center;
   }
   
+
+  .react-datepicker__aria-live {
+    display: none !important;
+  }

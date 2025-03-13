@@ -41,5 +41,24 @@
     "error_confirm_password_required": "Por favor, confirma tu contraseña",
     "error_password_mismatch": "Las contraseñas no coinciden",
     "error_form": "Ocurrió un error. Por favor, inténtalo de nuevo."
-  }
+  },
+  "selectDueDate": "Seleccionar fecha de vencimiento",
+  "addTodo": "Agregar tarea",
+  "cancel": "Cancelar",
+  "tasks": "Tareas",
+  "dueDate": "Fecha de vencimiento",
+  "enterTodoDescription": "¿Qué hay que hacer?",
+  "markCompleted": "Marcar como completado",
+  "noTodosYet": "Aún no hay tareas",
+  "addYourFirstTodo": "Agrega tu primera tarea",
+  "todoAdded": "Tarea agregada con éxito",
+  "todoUpdated": "Tarea actualizada con éxito",
+  "todoDeleted": "Tarea eliminada",
+  "failedToAddTodo": "Error al agregar la tarea",
+  "failedToUpdateTodo": "Error al actualizar la tarea",
+  "failedToDeleteTodo": "Error al eliminar la tarea",
+  "errorFetchingTodos": "Error al cargar las tareas",
+  "list": "Lista",
+  "calendar": "Calendario",
+  "deleteTodo": "Eliminar tarea"
 }

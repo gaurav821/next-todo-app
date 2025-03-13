@@ -1,0 +1,13 @@
+type NextAuthUser {
+  id: ID!
+  email: String!
+  password: String!
+}
+
+type Query {
+  nextAuthUser(email: String!): NextAuthUser
+}
+
+type Mutation {
+  createNextAuthUser(email: String!, password: String!): NextAuthUser
+}
